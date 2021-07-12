@@ -1,0 +1,288 @@
+:root {
+  --very-dark: #2e323f;
+  --dark: #3b4050;
+  --light-dark: #6f737f;
+  --white: #fff;
+  --medium-brown: #a59678;
+  font-size: 0.625rem;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+}
+/* Common styles */
+ul {
+  padding: 0;
+  list-style: none;
+}
+img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left;
+}
+h1,
+h2,
+h3,
+a {
+  font-family: "Oswald", sans-serif;
+}
+a {
+  display: inline-block;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+main,
+.three-cols,
+.two-cols,
+footer {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* Font sizes */
+.f-16 {
+  font-size: 1.6rem;
+}
+.f-18 {
+  font-size: 1.8rem;
+}
+.f-21 {
+  font-size: 2.1rem;
+}
+.f-24 {
+  font-size: 2.4rem;
+}
+.f-30 {
+  font-size: 3rem;
+}
+.f-36 {
+  font-size: 3.6rem;
+}
+.f-90 {
+  font-size: 5.5rem;
+}
+@media (min-width: 700px) {
+  .f-90 {
+    font-size: 7rem;
+  }
+}
+/* Font-colors:  */
+.f-col-brown {
+  color: var(--medium-brown);
+}
+.f-col-white {
+  color: var(--white);
+}
+
+/* Header (Navigation) */
+header {
+  padding: 2rem 0;
+  background-color: var(--very-dark);
+}
+/* The navigation as a whole */
+.nav__primary {
+  text-align: center;
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+/* Wrapped the bars and logo icon in a div to control it easily, giving it some styles */
+.icons {
+  width: 100%; /* covers the entire viewport width otherwise covers just the content */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Each ul is a nav__list so initially they are not displayed */
+.nav__list {
+  display: none;
+}
+/* CSS class to display them back;They are not in flex mode in mobile so used block */
+.nav--visible {
+  display: block;
+}
+/* The bars button: giving it some styles */
+.nav-toggle {
+  cursor: pointer;
+}
+.nav-toggle:hover {
+  opacity: 0.5;
+}
+/* Top gap above nav items and some hover effects */
+.nav__item + .nav__item {
+  margin-top: 0.5em;
+}
+.nav__item:is(:hover, :focus) {
+  opacity: 0.55;
+  box-shadow: 0 2px 0 #fff;
+}
+/* Main tag */
+main {
+  background-color: var(--dark);
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+}
+.main__heading {
+  line-height: 1.1;
+}
+/* gap between the para and the main heading */
+.main__content {
+  margin-top: 3em;
+}
+/* "I want to learn" button with gap above it */
+.iwl-btn {
+  margin-top: 2em;
+  padding: 0.25em 1.5em;
+  background-color: var(--medium-brown);
+  border-radius: 100px;
+}
+.iwl-btn:is(:hover, :focus) {
+  opacity: 0.75;
+}
+/* The section with the three columns */
+.three-cols {
+  background-color: rgb(238, 238, 238);
+  text-align: center;
+}
+/* The upper gap between the three cols */
+.three-cols .col + .col {
+  margin-top: 3em;
+}
+/* The two-cols section; gap between the article and the three cards container */
+
+.two-cols > .container > * + * {
+  margin-top: 4rem;
+}
+
+/* Giving top gap to the content (not the cards) */
+
+article > * + * {
+  margin-top: 2rem;
+}
+
+/* Two-cols section: aside with the three cards*/
+
+aside .col {
+  background-color: var(--dark);
+  text-align: center;
+  padding: 1em 0em 2em 0em;
+}
+
+/* Top gap between the cards as well as gaps for the footer*/
+
+aside > * + *,
+footer .row > * + * {
+  margin-top: 4em;
+}
+
+/* The para inside each card; centering it and giving it a width percent */
+
+aside > .col > p {
+  width: 75%;
+  margin: 0 auto;
+}
+
+/* footer */
+footer {
+  background-color: var(--dark);
+  text-align: center;
+}
+/* Gap between the contents is given above along with aside so only thing left is to give gaps for the row and the heading and for the ul lis */
+footer .row {
+  margin-top: 3em;
+}
+.footer__about-company > * + *,
+footer li {
+  margin-top: 1em;
+}
+
+/* Media query for 700px or more */
+
+@media (min-width: 700px) {
+  .icons {
+    width: auto; /* This will prevent messing up the navigation at larger screen sizes */
+  }
+  /* No need of the bars icon anymore */
+  .nav-toggle {
+    display: none !important;
+  }
+  /* Extra styles for the two uls inside the nav */
+  .nav__list--primary {
+    margin-left: auto;
+    margin-right: 2em;
+  }
+  .nav__item + .nav__item {
+    margin-top: 0em;
+    margin-left: 0.75em;
+  }
+  /* flex for the aside, the three cards section, footer, the navigation as a whole and the two uls inside the nav and  */
+  aside,
+  .three-cols > .row,
+  footer .row,
+  .nav__primary,
+  .nav__list--primary,
+  .nav__list--secondary {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  /* Removing top gaps and adding side gaps */
+  aside > * + *,
+  .three-cols > .row > .col + .col,
+  footer .row > .col + .col {
+    margin-top: 0em;
+    margin-left: 3em;
+  }
+  /* Gaps for the headings in the aside section as it is 100% width by default */
+  aside > .col > h2 {
+    padding: 0 1em;
+  }
+  footer {
+    text-align: left;
+  }
+  .footer__about-company {
+    width: 40%;
+    /* at the breakpoint it appears very tight so gave some room to the right :) */
+    margin-right: 1em;
+  }
+}
+/* Media query for 1000px  */
+
+@media (min-width: 1000px) {
+  .two-cols > .row,
+  main > .row {
+    display: flex;
+    justify-content: space-between;
+  }
+  .main__heading {
+    width: 50%;
+  }
+  .main__content {
+    align-self: flex-end;
+    width: 40%;
+  }
+  article {
+    width: 55%;
+  }
+  aside {
+    width: 35%;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  aside > .col + .col {
+    margin-top: 3em;
+    margin-left: 0em;
+  }
+}
